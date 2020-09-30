@@ -1,8 +1,15 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const adminControllers = require("../controllers/adminControllers");
+const adminControllers = require('../controllers/adminControllers');
 
-// final route is /admin/test
-router.get("/test", adminControllers.getTest);
+router.post('/register', adminControllers.register);
+
+router.post('/login', adminControllers.login, function(req, res) {
+  res.redirect(`/dashboard`);
+});
+
+router.get('/logout', adminControllers.logout);
+
+router.get('/info', adminControllers.getInfo);
 
 module.exports = router;
